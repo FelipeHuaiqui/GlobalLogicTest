@@ -1,0 +1,51 @@
+@startuml
+actor Cliente
+participant JavaEvaluationControllerImpl
+participant JavaEvaluationServiceImpl
+participant UserRepository
+participant JwtUtil
+
+Cliente -> JavaEvaluationControllerImpl : GET /login (bearer token)
+JavaEvaluationControllerImpl -> JavaEvaluationServiceImpl : logIn(token)
+JavaEvaluationServiceImpl -> UserRepository : findByToken(token)
+
+alt Usuario no encontrado
+    JavaEvaluationServiceImpl -> JavaEvaluationServiceImpl : throw NotFound
+    JavaEvaluationControllerImpl --> Cliente : HTTP 404 Not Found
+    note right of JavaEvaluationControllerImpl
+    {
+      "error": [
+        {
+          "timestamp": "2025-06-08T04:31:59.039+00:00",
+          "codigo": 404,
+          "detail": "No hay usuario para el token"
+        }
+      ]
+    }
+    end note
+else Usuario encontrado
+    JavaEvaluationServiceImpl -> JwtUtil : generarToken(email)
+    JavaEvaluationServiceImpl -> UserRepository : save(updatedUser)
+    JavaEvaluationServiceImpl --> JavaEvaluationControllerImpl : LoginResponse
+    JavaEvaluationControllerImpl --> Cliente : HTTP 200 OK
+    note right of JavaEvaluationControllerImpl
+    {
+      "id": "24d4bf57-da4d-4694-85c2-2543a5f25b28",
+      "created": "Jun 07, 2025 21:43:41 PM",
+      "lastLogin": "Jun 07, 2025 21:44:05 PM",
+      "token": "eyJhbGciOiJIUzI1NiJ9...",
+      "isActive": true,
+      "name": "Julio Gonzalez",
+      "email": "julio@testssw.cl",
+      "password": "$2a$10$...",
+      "phones": [
+        {
+          "number": 87650009,
+          "citycode": 7,
+          "countrycode": "25"
+        }
+      ]
+    }
+    end note
+end
+@enduml

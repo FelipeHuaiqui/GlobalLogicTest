@@ -1,0 +1,56 @@
+@startuml
+actor Cliente
+participant JavaEvaluationControllerImpl
+participant JavaEvaluationServiceImpl
+participant UserRepository
+participant JwtUtil
+
+Cliente -> JavaEvaluationControllerImpl : POST /sign-up(SignUpRequest)
+note right of JavaEvaluationControllerImpl
+{
+  "name": "Julio Gonzalez",
+  "email": "julio@testssw.cl",
+  "password": "a2asfGfdfdf4",
+  "phones": [
+    {
+      "number": 87650009,
+      "citycode": 7,
+      "countrycode": "25"
+    }
+  ]
+}
+end note
+
+JavaEvaluationControllerImpl -> JavaEvaluationServiceImpl : signUp(request)
+JavaEvaluationServiceImpl -> UserRepository : findByEmail(email)
+
+alt Usuario no existe
+    JavaEvaluationServiceImpl -> JwtUtil : generarToken(email)
+    JavaEvaluationServiceImpl -> UserRepository : guardarUsuario(user)
+    JavaEvaluationServiceImpl -> JavaEvaluationControllerImpl : SignUpResponse
+    JavaEvaluationControllerImpl --> Cliente : HTTP 201 Created
+    note right of JavaEvaluationControllerImpl
+    {
+      "id": "0795f78b-f238-4859-bff8-6d9f5576fd98",
+      "created": "Jun 06, 2025 16:18:08 PM",
+      "lastLogin": "Jun 06, 2025 16:18:08 PM",
+      "token": "eyJhbGciOiJIUzI1NiJ9...",
+      "isActive": true
+    }
+    end note
+else Usuario ya existe
+    JavaEvaluationServiceImpl -> JavaEvaluationServiceImpl : throw ConflictException
+    JavaEvaluationControllerImpl --> Cliente : HTTP 409 Conflict
+    note right of JavaEvaluationControllerImpl
+    {
+      "error": [
+        {
+          "timestamp": "2025-06-08T04:22:45.651+00:00",
+          "codigo": 409,
+          "detail": "El usuario ya existe para el email julio@testssw.cl"
+        }
+      ]
+    }
+    end note
+end
+@enduml

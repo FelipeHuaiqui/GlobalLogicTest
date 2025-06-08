@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "8f5794d1-bfa8-4f30-8b46-8516b59a9d0e",
+		"name": "TestGlobalLogic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37302553"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDkyNDEwNTgsImV4cCI6MTc0OTMyNzQ1OH0.Hf5D6uUuGVLsHDcZvDpHWzfpchk_jbF1xe-jK5nQVrw",
+						"description": "utilizar token de response",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "response prueba",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDkyNDEwNTgsImV4cCI6MTc0OTMyNzQ1OH0.Hf5D6uUuGVLsHDcZvDpHWzfpchk_jbF1xe-jK5nQVrw",
+								"description": "utilizar token de response",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 06 Jun 2025 20:18:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"09a3e2a8-a04b-40ae-b832-7433be39b2dd\",\n    \"created\": \"Jun 06, 2025 16:17:38 PM\",\n    \"lastLogin\": \"Jun 06, 2025 16:18:22 PM\",\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDkyNDExMDIsImV4cCI6MTc0OTMyNzUwMn0.V2ZSxITZ1IlJ0xop7U5wLqqRL-YXEmASh9r5PcIoiPs\",\n    \"isActive\": true,\n    \"name\": \"Felipe Ignaico\",\n    \"email\": \"felipe12321@gmail.com\",\n    \"password\": \"$2a$10$.Jmrvvg9ucPEGRJUIwlU4OgS6NMK9Nblt183fEzftQRK1IL1fdo2C\",\n    \"phones\": [\n        {\n            \"number\": 56994674171,\n            \"citycode\": 1321,\n            \"countrycode\": \"CL\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "test 2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDkyNDEwNTgsImV4cCI6MTc0OTMyNzQ1OH0.Hf5D6uUuGVLsHDcZvDpHWzfpchk_jbF1xe-jK5nQVrw",
+								"description": "utilizar token de response",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jun 2025 01:44:05 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"24d4bf57-da4d-4694-85c2-2543a5f25b28\",\n    \"created\": \"Jun 07, 2025 21:43:41 PM\",\n    \"lastLogin\": \"Jun 07, 2025 21:44:05 PM\",\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDkzNDcwNDUsInN1YiI6Imp1bGlvQHRlc3Rzc3cuY2wiLCJleHAiOjE3NDk0MzM0NDV9.9KU0mo-RhPxb-KA_xA-Qs0jyL4qaaoS5tkSVy79GQ9U\",\n    \"isActive\": true,\n    \"name\": \"Julio Gonzalez\",\n    \"email\": \"julio@testssw.cl\",\n    \"password\": \"$2a$10$.7E3v9CZqYVsnKdEuCxq.eTt1kAKi1/ejSNrCZQKUmzIIUvafcNN6\",\n    \"phones\": [\n        {\n            \"number\": 87650009,\n            \"citycode\": 7,\n            \"countrycode\": \"25\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "sign-up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Julio Gonzalez\",\r\n    \"email\": \"julio@testssw.cl\",\r\n    \"password\": \"a2asfGfdfdf4\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": 87650009,\r\n            \"citycode\": 7,\r\n            \"countrycode\": \"25\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/sign-up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "response prueba",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FelipeIgnacioo\",\r\n    \"email\": \"whatstheuse@gmail.com\",\r\n    \"password\": \"abcdEfg12\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": 56994674171,\r\n            \"citycode\": 1321,\r\n            \"countrycode\": \"CL\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/sign-up",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sign-up"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 06 Jun 2025 20:18:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0795f78b-f238-4859-bff8-6d9f5576fd98\",\n    \"created\": \"Jun 06, 2025 16:18:08 PM\",\n    \"lastLogin\": \"Jun 06, 2025 16:18:08 PM\",\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDkyNDEwODgsImV4cCI6MTc0OTMyNzQ4OH0.GxqhAt6gZsY6KflAtYMHnV24a-LSikl2lT8J2Cy4kmU\",\n    \"isActive\": true\n}"
+				},
+				{
+					"name": "sign-up test 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Julio Gonzalez\",\r\n    \"email\": \"julio@testssw.cl\",\r\n    \"password\": \"a2asfGfdfdf4\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": 87650009,\r\n            \"citycode\": 7,\r\n            \"countrycode\": \"25\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/sign-up",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sign-up"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jun 2025 01:43:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"24d4bf57-da4d-4694-85c2-2543a5f25b28\",\n    \"created\": \"Jun 07, 2025 21:43:41 PM\",\n    \"lastLogin\": \"Jun 07, 2025 21:43:41 PM\",\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDkzNDcwMjEsInN1YiI6Imp1bGlvQHRlc3Rzc3cuY2wiLCJleHAiOjE3NDk0MzM0MjF9.638fpOhQOWsKDSHQnNVSeLNSKIk07p6i1xu-Jt-O3Do\",\n    \"isActive\": true\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

@@ -1,0 +1,29 @@
+@startuml
+package "GlobalLogic-API-TEST" {
+
+  ' === CONFIGURACIÓN ===
+  component [SecurityConfig] <<configuration>>
+  component [JwtFilter] <<filter>>
+
+  ' === CONTROLADORES ===
+  component [UsersControllerImpl] <<controller>>
+  interface (IUsersController)
+  component [ExceptionHandlerController] <<controller>>
+
+  ' === SERVICIOS ===
+  component [UsersServiceImpl] <<service>>
+  interface (IUsersService)
+
+  ' === REPOSITORIO ===
+  component [UserRepository] <<repository>>
+
+  ' === RELACIONES ===
+  [UsersControllerImpl] .up.|> (IUsersController) : implementa
+  [UsersControllerImpl] -right-> (IUsersService) : usa
+
+  [UsersServiceImpl] .left.|> (IUsersService) : implementa
+  [UsersServiceImpl] -right-> [UserRepository] : usa
+
+  [SecurityConfig] -down-> [JwtFilter] : registra
+}
+@enduml
