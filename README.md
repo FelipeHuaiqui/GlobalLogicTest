@@ -4,6 +4,7 @@ API - GlobalLogicTest
 📦 Clonar y Ejecutar el Proyecto
 
     git clone https://github.com/FelipeHuaiqui/GlobalLogicTest.git
+    cd al repositorio y abrir con algun IDE con java
     correr el GlobalLogicApplication
     
 📚 Requisitos
