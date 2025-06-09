@@ -1,7 +1,6 @@
-API - GlobalLogicTest
+## API - GlobalLogicTest
 
-
-📦 Clonar y Ejecutar el Proyecto
+# 📦 Clonar y Ejecutar el Proyecto
 
     git clone https://github.com/FelipeHuaiqui/GlobalLogicTest.git
     cd al repositorio y abrir con algun IDE con java
@@ -17,7 +16,15 @@ API - GlobalLogicTest
       -  JDBC URL: jdbc:h2:file:./data/test          
       -  User Name: sa
       -  Password:
-      
+
+📚 Caracteristicas especificas de java 8 u 11
+
+    Capa service - (UsersServiceImpl)
+    -Optional: linea 40
+    -Stream: linea 81, 111
+    -Collectors: linea 83, 113
+    -LocalDateTime: linea 77, 78
+
 🔐 Endpoints
 
     - Usa /sign-up para registrar usuario : POST - http://localhost:8081/sign-up
@@ -35,3 +42,15 @@ API - GlobalLogicTest
     service/
     exception/
     utils/
+
+## 📦 Diagrama de componentes
+
+![digrama de componentes](https://github.com/user-attachments/assets/c74ab449-566d-4c83-b707-d6702c2d8ed1)
+
+## 📦 Diagramas de secuencia:
+
+## DS - SIGNUP
+![ds - signUp](https://github.com/user-attachments/assets/95fb6304-781d-4acd-91af-9c0f30768910)
+
+## DS - LOGIN
+![ds - login](https://github.com/user-attachments/assets/25617822-dbf4-42a3-8c08-819460f7765b)
