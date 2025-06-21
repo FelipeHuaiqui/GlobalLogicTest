@@ -2,6 +2,8 @@ package com.globallogic.globallogic.Configuration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,7 @@ class JwtFilterTest {
 
     @Test
     void testSinBearer() throws Exception {
-        when(request.getRequestURI()).thenReturn("/login");
+        when(request.getRequestURI()).thenReturn("/api-v1/login");
         when(request.getHeader("Authorization")).thenReturn(null);
 
         jwtFilter.doFilterInternal(request, response, filterChain);
@@ -45,7 +47,7 @@ class JwtFilterTest {
 
     @Test
     void testTokenInvalido() throws Exception {
-        when(request.getRequestURI()).thenReturn("/login");
+        when(request.getRequestURI()).thenReturn("/api-v1/login");
         when(request.getHeader("Authorization")).thenReturn("InvalidToken");
 
         jwtFilter.doFilterInternal(request, response, filterChain);
@@ -57,7 +59,7 @@ class JwtFilterTest {
 
     @Test
     void testTokenMlalformado() throws Exception {
-        when(request.getRequestURI()).thenReturn("/login");
+        when(request.getRequestURI()).thenReturn("/api-v1/login");
         when(request.getHeader("Authorization")).thenReturn("Bearer malformado");
 
         jwtFilter.doFilterInternal(request, response, filterChain);
@@ -74,13 +76,19 @@ class JwtFilterTest {
                 .signWith(io.jsonwebtoken.SignatureAlgorithm.HS256, "12345678-TestTecnico")
                 .compact();
 
-        when(request.getRequestURI()).thenReturn("/login");
-        when(request.getHeader("Authorization")).thenReturn("Bearer " + token);
+        MockHttpServletRequest mockRequest = new MockHttpServletRequest();
+        mockRequest.setRequestURI("/api-v1/login");
+        mockRequest.addHeader("Authorization", "Bearer " + token);
 
-        jwtFilter.doFilterInternal(request, response, filterChain);
+        MockHttpServletResponse mockResponse = new MockHttpServletResponse();
+        FilterChain filterChain = mock(FilterChain.class);
 
-        verify(filterChain).doFilter(request, response);
+        jwtFilter.doFilter(mockRequest, mockResponse, filterChain);
+
+        assertEquals(token, mockRequest.getAttribute("jwt"));
+        verify(filterChain).doFilter(mockRequest, mockResponse);
     }
+
 
     @Test
     void testNoVaALogin() throws Exception {

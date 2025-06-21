@@ -1,13 +1,13 @@
 package com.globallogic.globallogic.service;
 
-import com.globallogic.globallogic.controller.request.PhonesTO;
-import com.globallogic.globallogic.controller.request.SignUpRequest;
-import com.globallogic.globallogic.controller.response.LoginResponse;
-import com.globallogic.globallogic.controller.response.SignUpResponse;
+import com.globallogic.globallogic.dto.request.PhonesTO;
+import com.globallogic.globallogic.dto.request.SignUpRequest;
+import com.globallogic.globallogic.dto.response.LoginResponse;
+import com.globallogic.globallogic.dto.response.SignUpResponse;
 import com.globallogic.globallogic.exception.ConflictException;
 import com.globallogic.globallogic.exception.NotFound;
-import com.globallogic.globallogic.repository.Phone;
-import com.globallogic.globallogic.repository.UserRegister;
+import com.globallogic.globallogic.repository.model.Phone;
+import com.globallogic.globallogic.repository.model.UserRegister;
 import com.globallogic.globallogic.repository.UserRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class JavaEvaluationServiceImplTest {
+class UserServiceImplTest {
 
     @Mock
     private UserRepository userRepository;

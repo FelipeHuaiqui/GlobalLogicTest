@@ -1,4 +1,4 @@
-package com.globallogic.globallogic.controller.response;
+package com.globallogic.globallogic.dto.response;
 
 import lombok.Data;
 

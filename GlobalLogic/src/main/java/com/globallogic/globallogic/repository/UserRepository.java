@@ -1,5 +1,6 @@
 package com.globallogic.globallogic.repository;
 
+import com.globallogic.globallogic.repository.model.UserRegister;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

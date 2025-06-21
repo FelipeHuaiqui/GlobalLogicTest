@@ -1,4 +1,4 @@
-package com.globallogic.globallogic.repository;
+package com.globallogic.globallogic.repository.model;
 
 import lombok.Data;
 

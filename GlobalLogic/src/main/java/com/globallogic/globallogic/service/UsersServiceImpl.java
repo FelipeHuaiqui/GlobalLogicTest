@@ -1,13 +1,13 @@
 package com.globallogic.globallogic.service;
 
-import com.globallogic.globallogic.controller.request.PhonesTO;
-import com.globallogic.globallogic.controller.request.SignUpRequest;
-import com.globallogic.globallogic.controller.response.LoginResponse;
-import com.globallogic.globallogic.controller.response.SignUpResponse;
+import com.globallogic.globallogic.dto.request.PhonesTO;
+import com.globallogic.globallogic.dto.request.SignUpRequest;
+import com.globallogic.globallogic.dto.response.LoginResponse;
+import com.globallogic.globallogic.dto.response.SignUpResponse;
 import com.globallogic.globallogic.exception.ConflictException;
 import com.globallogic.globallogic.exception.NotFound;
-import com.globallogic.globallogic.repository.Phone;
-import com.globallogic.globallogic.repository.UserRegister;
+import com.globallogic.globallogic.repository.model.Phone;
+import com.globallogic.globallogic.repository.model.UserRegister;
 import com.globallogic.globallogic.repository.UserRepository;
 import com.globallogic.globallogic.utils.JwtUtil;
 import lombok.AllArgsConstructor;
@@ -38,9 +38,9 @@ public class UsersServiceImpl implements IUsersService {
     public SignUpResponse signUp(SignUpRequest signUpRequest) {
         try {
             Optional<UserRegister> userSearch = userRepository.findByEmail(signUpRequest.getEmail());
-            userSearch.ifPresent(userRegister -> {
-                throw new ConflictException("El usuario ya existe para el email " + userRegister.getEmail());
-            });
+            if (userSearch.isPresent()) {
+                throw new ConflictException("El usuario ya existe para el email " + userSearch.get().getEmail());
+            }
             String token = JwtUtil.generarToken(signUpRequest.getEmail());
             UserRegister savedUser = persistUser(signUpRequest, token);
             return buildResponseSign(savedUser);
@@ -52,8 +52,14 @@ public class UsersServiceImpl implements IUsersService {
 
     @Override
     public LoginResponse logIn(String token) {
+        UserRegister user = new UserRegister();
         try{
-            UserRegister user = userRepository.findByToken(token).orElseThrow(() -> new NotFound("No hay usuario para el token"));
+            Optional<UserRegister> optionalUser = userRepository.findByToken(token);
+            if (optionalUser.isPresent()) {
+                user =  optionalUser.get();
+            } else {
+                throw new NotFound("No hay usuario para el token");
+            }
             String nuevoToken = JwtUtil.generarToken(user.getEmail());
             user.setToken(nuevoToken);
             user.setLastLogin(formatDate(LocalDateTime.now()));

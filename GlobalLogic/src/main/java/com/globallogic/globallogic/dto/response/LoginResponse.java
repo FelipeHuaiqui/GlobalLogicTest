@@ -1,6 +1,6 @@
-package com.globallogic.globallogic.controller.response;
+package com.globallogic.globallogic.dto.response;
 
-import com.globallogic.globallogic.controller.request.PhonesTO;
+import com.globallogic.globallogic.dto.request.PhonesTO;
 import lombok.Data;
 
 import java.util.List;

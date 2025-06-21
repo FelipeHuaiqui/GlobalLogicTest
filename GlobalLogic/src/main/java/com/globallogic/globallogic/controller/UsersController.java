@@ -1,8 +1,8 @@
 package com.globallogic.globallogic.controller;
 
-import com.globallogic.globallogic.controller.request.SignUpRequest;
-import com.globallogic.globallogic.controller.response.LoginResponse;
-import com.globallogic.globallogic.controller.response.SignUpResponse;
+import com.globallogic.globallogic.dto.request.SignUpRequest;
+import com.globallogic.globallogic.dto.response.LoginResponse;
+import com.globallogic.globallogic.dto.response.SignUpResponse;
 import com.globallogic.globallogic.service.IUsersService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController()
-@RequestMapping()
+@RequestMapping("/api-v1")
 @AllArgsConstructor
-public class UsersControllerImpl implements IUsersController {
+public class UsersController {
 
     @Autowired
     private IUsersService javaEvaluationService;

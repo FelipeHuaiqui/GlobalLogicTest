@@ -31,6 +31,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
+    //serializacion en gral
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.17.1'
     // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -57,7 +61,6 @@ tasks.named('test') {
 jacoco {
     toolVersion = "0.8.7"
 }
-
 jacocoTestReport {
     dependsOn test
     reports {
@@ -65,25 +68,23 @@ jacocoTestReport {
         csv.required = false
         html.outputLocation = layout.buildDirectory.dir("jacocoHtml").get().asFile
     }
+}
 
-
-    afterEvaluate {
+afterEvaluate {
+    jacocoTestReport {
         classDirectories.setFrom(
                 files(classDirectories.files.collect {
                     fileTree(dir: it, exclude: [
-                            '**/request/**',
-                            '**/response/**',
+                            '**/dto/**',
                             '**/Configuration/**',
                             '**/repository/**',
-                            '**/exception/**',
-                            '**/utils/**',
-                            '**/*Exception*',
-                            '**/*Application*'
+                            '**/*Exception*'
                     ])
                 })
         )
     }
 }
+
 
 jacocoTestCoverageVerification {
     dependsOn jacocoTestReport
@@ -92,7 +93,7 @@ jacocoTestCoverageVerification {
             element = 'CLASS'
             includes = ['com.globallogic.globallogic.service.*']
             limit {
-                counter = 'INSTRUCTION'
+                counter = 'BRANCH'
                 value = 'COVEREDRATIO'
                 minimum = 0.80
             }

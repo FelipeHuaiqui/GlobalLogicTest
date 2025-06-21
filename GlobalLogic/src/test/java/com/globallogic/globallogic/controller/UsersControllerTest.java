@@ -1,8 +1,8 @@
 package com.globallogic.globallogic.controller;
 
-import com.globallogic.globallogic.controller.request.SignUpRequest;
-import com.globallogic.globallogic.controller.response.LoginResponse;
-import com.globallogic.globallogic.controller.response.SignUpResponse;
+import com.globallogic.globallogic.dto.request.SignUpRequest;
+import com.globallogic.globallogic.dto.response.LoginResponse;
+import com.globallogic.globallogic.dto.response.SignUpResponse;
 import com.globallogic.globallogic.service.IUsersService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,15 +15,15 @@ import static org.mockito.Mockito.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-class JavaEvaluationControllerImplTest {
+class UsersControllerTest {
 
-    private UsersControllerImpl controller;
+    private UsersController controller;
     private IUsersService service;
 
     @BeforeEach
     void setUp() {
         service = mock(IUsersService.class);
-        controller = new UsersControllerImpl(service);
+        controller = new UsersController(service);
     }
 
     @Test
