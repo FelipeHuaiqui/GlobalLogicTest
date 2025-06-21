@@ -38,6 +38,7 @@
 
     configuration/
     controller/
+    dto/
     repository/
     service/
     exception/
