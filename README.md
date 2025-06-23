@@ -27,8 +27,8 @@
 
 🔐 Endpoints
 
-    - Usa /sign-up para registrar usuario : POST - http://localhost:8081/sign-up
-    - Usa /login para obtener un token y la informacion adicional (contraseña viene encriptada): GET - http://localhost:8081/login
+    - Usa /sign-up para registrar usuario : POST - http://localhost:8081/api-v1/sign-up
+    - Usa /login para obtener un token y la informacion adicional (contraseña viene encriptada): GET - http://localhost:8081/api-v1/login
         - token en postman, ve al apartado Authorization: 
         -selecciona Bearer Token: agrega el token obtenido del sign-up, o del login nuevo dependiendo del caso
         
